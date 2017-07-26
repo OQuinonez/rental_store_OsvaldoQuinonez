@@ -1,6 +1,6 @@
 Item_type, Quantity, Price_per_item
-Chairs, 400, .75
-Tables, 150, 2.00
-Bouncy House, 5, 200.00
-Flowers, 75, .25 
+Chairs, 400, .25
+Tables, 150, 1.00
+Bouncy House, 5, 100.00
+Flowers, 75, .10 
 Music Sytem, 3, 85.00
