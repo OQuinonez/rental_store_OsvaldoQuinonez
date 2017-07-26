@@ -28,3 +28,23 @@ def load_item():
             individual[2].strip()
         ])
     return products
+
+def cost_of(amount, item, hours):
+    """ int, str, float _> float
+    Function will recieve an item and look for it in the
+    inventory and if it is found it will return 
+    the price of it multiplied by the hours
+    """
+    with open('inventory.txt', 'r') as file:
+        file.readline()
+        elements = file.readlines()
+    msg = 'Sorry there was an error during the purchase'
+    for items in elements:
+        if item.title() in items:
+            pieces = items.split(', ')
+            cost = float(pieces[2])
+            total = float(cost) * float(amount) * float(hours)
+            return '{:0.2f}'.format(total)
+        else:
+            break
+    return msg
