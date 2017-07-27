@@ -1,5 +1,5 @@
 def get_item(inventory, item):
-    ''' str, str_> str, float, float
+    ''' list[list], str_> str, float, float
     Functions recieves an item and if 
     it is found in the inventory 
     it returns the item information.
@@ -11,7 +11,7 @@ def get_item(inventory, item):
     return msg
 
 def item_messages(inventory, item):
-    ''' str, str_> str
+    ''' list[list], str_> str
     Function returns a different message if
     the item is in the inventory or if the items is not
     in the inventory
