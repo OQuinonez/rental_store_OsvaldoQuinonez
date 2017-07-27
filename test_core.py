@@ -11,3 +11,8 @@ def test_item_messages():
     actual = core.item_messages([['Toys', 20, 2.00]], 'Wheels')
     expect = 'We are sorry, but we do not have the item for rent.'
     assert expect == actual
+
+def test_tax_of():
+    actual = core.tax_of(1.00)
+    expect = '1.07'
+    assert expect == actual
