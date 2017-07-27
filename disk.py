@@ -45,6 +45,4 @@ def cost_of(amount, item, hours):
             cost = float(pieces[2])
             total = float(cost) * float(amount) * float(hours)
             return '{:0.2f}'.format(total)
-        else:
-            break
     return msg
