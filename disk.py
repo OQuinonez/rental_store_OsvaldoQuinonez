@@ -46,3 +46,22 @@ def cost_of(amount, item, hours):
             total = float(cost) * float(amount) * float(hours)
             return '{:0.2f}'.format(total)
     return msg
+
+
+def replacement_of(item, amount):
+    ''' str, int _> float
+    Function will recive and item and the amount rented
+    for the item and it will return the replacement value 
+    for the amount of the same items rented
+    '''
+    with open('inventory.txt', 'r') as file:
+        file.readline()
+        elements = file.readlines()
+    msg = 'Sorry there was an error.'
+    for items in elements:
+        if item.title() in items:
+            pieces = items.split(', ')
+            replace = float(pieces[3])
+            value = (float(replace) * .10) * float(amount)
+            return '{:0.2f}'.format(value)
+    return msg
