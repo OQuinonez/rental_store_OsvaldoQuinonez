@@ -1,3 +1,20 @@
+import time
+def rent_time(name):
+    '''str _> float
+    student will enter name and return the time the they
+    came in
+    '''
+    time.now()
+    return time.strptime("%H:%M:%S, %B %d, 20%y", ???)
+
+def update_history(item, amount, hours):
+    ''' str, float, float _> None
+    '''
+    msg = item + ', ' + str(amount) + ', ' + str(hours) + '\n'
+    with open('gas.txt', 'a') as file:
+        file.write(msg)
+    return None
+
 def get_item(inventory, item):
     ''' list[list], str_> str, float, float
     Functions recieves an item and if 
