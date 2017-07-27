@@ -30,6 +30,6 @@ def tax_of(money):
     >>> tax_of(1)
     '1.07'
     '''
-    tax = float(money) * .07
+    tax = (money) * .07
     total = money + tax
     return '{:0.2f}'.format(total)
