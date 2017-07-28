@@ -1,5 +1,5 @@
 from disk import load_inventory, load_item, cost_of, replacement_of
-from core import get_item, item_messages, tax_of
+from core import get_item, item_messages, tax_of, rent_time
 def rules():
     print('Hello, welcome to Party Room Rentals.\n\n')
     print ('We would like you to know some things before you rent an item.\n\n')
@@ -22,6 +22,8 @@ def store():
     print('You got ', amount, 'items of', product.title(), '\n')
     replacing = replacement_of(product, amount)
     print('Ok your total with tax is $', float(money), '\nYou also have to pay a deposit of $', float(replacing))
+    time = rent_time(product)
+    print(time)
     renting = float(money) + float(replacing)
     print('Your total for today is $', renting)
 def main():
