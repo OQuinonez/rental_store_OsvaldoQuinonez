@@ -4,18 +4,9 @@ def rent_time(item_name):
     Function will recive the item name and it will return
     the time it was rented
     '''
-    time = datetime.now()
+    time = datetime.now().strftime('%y/%m/%d %H:%M')
     return time
     # return time.strptime("%H:%M:%S, %B %d, 20%y", ???)
-
-# def update_history(item, amount, hours):
-#     ''' str, float, float _> None
-#     '''
-#     msg = item + ', ' + str(amount) + ', ' + str(hours) + '\n'
-#     with open('gas.txt', 'a') as file:
-#         file.write(msg)
-    return None
-
 def get_item(inventory, item):
     ''' list[list], str_> str, float, float
     Functions recieves an item and if 
