@@ -65,3 +65,38 @@ def replacement_of(item, amount):
             value = (float(replace) * .10) * float(amount)
             return '{:0.2f}'.format(value)
     return msg
+
+def update_history(item, amount, hours, time):
+    ''' str, float, float _> None
+    '''
+    msg = item + ', ' + str(amount) + ', ' + str(hours) + ', ' + time + '\n'
+    with open('history.txt', 'a') as file:
+        file.write(msg)
+    return None
+def transaction_num(name):
+    ''' str _> int
+    Function will get the name after every
+    purchase and it will give the customer a 
+    special number for when they return an item
+    '''
+    with open('history.txt', 'r') as file:
+        num = file.readlines()
+        numbers = len(num)
+        numbers += 1
+    return numbers
+# >>> from datetime import datetime
+# >>> st = datetime.now()
+# >>> end = datetime.now()
+# >>> end - st
+# datetime.timedelta(0, 10, 646110)
+# >>> d = end - st
+# >>> d.days
+# 0
+# >>> d.min
+# datetime.timedelta(-999999999)
+# >>> d.total_seconds
+# <built-in method total_seconds of datetime.timedelta object at 0x7f9ca9b5f968>
+# >>> d.total_seconds()
+# 10.64611
+# >>> d.total_seconds() / 60 / 60
+# 0.002957252777777778
