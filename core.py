@@ -19,6 +19,17 @@ def get_item(inventory, item):
             return elements[0:3]
     return msg
 
+def return_deposit(inventory, number):
+    ''' list[str], str _> str
+    Function will get a number from the user and it
+    will look for it in the history.txt file and if 
+    it is found, it will return the deposit
+    '''
+    msg = 'Sorry could not find number'
+    for elements in inventory:
+        if number in elements:
+            return elements[6]
+    return msg
 def item_messages(inventory, item):
     ''' list[list], str_> str
     Function returns a different message if
