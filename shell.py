@@ -1,6 +1,8 @@
 from disk import load_inventory, load_item, replacement_of
 from disk import update_history, transaction_num, cost_of
 from core import get_item, item_messages, tax_of, rent_time
+from core import return_deposit
+from disk import load_history
 def rules():
     print('\nHello, welcome to Party Room Rentals.\n\n')
     print ('We would like you to know some things before you rent an item.\n\n')
@@ -29,15 +31,27 @@ def store():
     update_history(str(number), float(money), product, int(amount), float(hours), time_out, replacing)
     print('Thanks for stopping by your number is ', number, ' you will need it when you come back.')
 def returning():
+    inventory = load_inventory()
     number = input('What is your number? ')
+    history = load_history()
+    depo = return_deposit(history, number)
+    print('Here is your deposit of $', depo)
+    print('\n 1.  Yes\t2.  No')
+    option = input('Would you like to look through the store again? ')
+    if option == '1':
+        store()
+    else:
+        print('Thank you we hoped you enjoyed your party.')
+
 def main():
     print('1.\tCheck out store\n2.\tReturn items rented\n')
     answer = input('What would you like to do today (Please enter number) ?  ')
+
     if answer == '1':
         rules()
         store()
     elif answer == '2':
-        return None
+        returning()
     else:
         print("Sorry invalid answer.")
 if __name__ == '__main__':
