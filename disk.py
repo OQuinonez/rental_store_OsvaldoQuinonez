@@ -69,7 +69,7 @@ def replacement_of(item, amount):
 def update_history(number, payed, item, amount, hours_rent, time):
     ''' str, float, float _> None
     '''
-    msg = str(number) + ', ' + payed + ', ' + item + ', ' + amount + ', ' + hours_rent + ', ' + time + '\n'
+    msg = str(number) + ', ' + str(payed) + ', ' + str(item) + ', ' + str(amount) + ', ' + str(hours_rent) + ', ' + str(time) + '\n'
     with open('history.txt', 'a') as file:
         file.write(msg)
     return None
@@ -83,7 +83,7 @@ def transaction_num(name):
         num = file.readlines()
         numbers = len(num)
         numbers += 1
-    return numbers
+    return int(numbers)
 # >>> from datetime import datetime
 # >>> st = datetime.now()
 # >>> end = datetime.now()
