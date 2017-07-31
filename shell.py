@@ -2,7 +2,7 @@ from disk import load_inventory, load_item, replacement_of
 from disk import update_history, transaction_num, cost_of
 from core import get_item, item_messages, tax_of, rent_time
 from core import return_deposit, is_on_time
-from disk import load_history
+from disk import load_history, take_away
 import time
 from datetime import datetime
 def rules():
@@ -31,6 +31,7 @@ def store():
     print('Your total for today is $', renting)
     number = transaction_num(product)
     update_history(str(number), float(money), product, int(amount), float(hours), time_out, replacing)
+    take_away(product, amount)
     print('Thanks for stopping by your number is ', number, ' you will need it when you come back.')
 def returning():
     inventory = load_inventory()
