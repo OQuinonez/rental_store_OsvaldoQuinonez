@@ -1,1 +1,4 @@
-1, 1200.00, Bouncy House, 2, 6, 17/07/28 14:47
+number_for_return, total_money, product, amount, hours_rent, time_item_left
+3, 350.0, Tables, 50, 7.0, 17/07/31 11:06
+3, 50.0, Chairs, 40, 5.0, 17/07/31 11:07
+4, 1600.0, Bouncy House, 2, 8.0, 17/07/31 11:08
