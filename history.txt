@@ -1,4 +1,5 @@
-number_for_return, total_money, product, amount, hours_rent, time_item_left
-3, 350.0, Tables, 50, 7.0, 17/07/31 11:06
-3, 50.0, Chairs, 40, 5.0, 17/07/31 11:07
-4, 1600.0, Bouncy House, 2, 8.0, 17/07/31 11:08
+number_for_return, total_money, product, amount, hours_rent, time_item_left, deposit
+2, 680.0, Sound Sytem, 1, 8.0, 17/07/31 11:40, 98.59
+3, 510.0, sound sytem, 2, 3.0, 17/07/31 11:55, 197.18
+4, 1200.0, Bouncy House, 2, 6.0, 17/07/31 13:31, 200.00
+5, 12.0, Tables, 4, 3.0, 17/07/31 13:58, 3.60
