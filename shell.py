@@ -1,8 +1,10 @@
 from disk import load_inventory, load_item, replacement_of
 from disk import update_history, transaction_num, cost_of
 from core import get_item, item_messages, tax_of, rent_time
-from core import return_deposit
+from core import return_deposit, is_on_time
 from disk import load_history
+import time
+from datetime import datetime
 def rules():
     print('\nHello, welcome to Party Room Rentals.\n\n')
     print ('We would like you to know some things before you rent an item.\n\n')
@@ -35,6 +37,12 @@ def returning():
     number = input('What is your number? ')
     history = load_history()
     depo = return_deposit(history, number)
+    print('Let\'s see if you exceed your hours. ')
+    print('Loading...')
+    time.sleep(3)
+    right_now = datetime.now()
+    answer = is_on_time(history, right_now, number)
+    print(answer)
     print('Here is your deposit of $', depo)
     print('\n 1.  Yes\t2.  No')
     option = input('Would you like to look through the store again? ')
