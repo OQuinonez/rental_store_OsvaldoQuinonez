@@ -113,7 +113,7 @@ def in_inventory():
         lines = file.readlines()
     for line in lines:
         split_string = line.strip().split(', ')
-        left.append([(split_string[0]), (split_string[1]), (split_string[2]), (split_string[3]), (split_string[4]), (split_string[5]), (split_string[6])])
+        left.append([(split_string[0]), (split_string[1]), (split_string[2]), (split_string[3])])
     return left
 
 def take_away(item_rented, amount):
