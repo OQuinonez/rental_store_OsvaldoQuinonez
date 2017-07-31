@@ -106,3 +106,12 @@ def load_history():
         ])
     return products
 
+def in_inventory():
+    left = []
+    with open('inventory.txt', 'r') as file:
+        file.readline()
+        lines = file.readlines()
+    for line in lines:
+        split_string = line.strip().split(', ')
+        left.append([(split_string[0]), (split_string[1]), (split_string[2]), (split_string[3]), (split_string[4]), (split_string[5]), (split_string[6])])
+    return left
