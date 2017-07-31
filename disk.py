@@ -115,3 +115,21 @@ def in_inventory():
         split_string = line.strip().split(', ')
         left.append([(split_string[0]), (split_string[1]), (split_string[2]), (split_string[3]), (split_string[4]), (split_string[5]), (split_string[6])])
     return left
+
+def take_away(item_rented, amount):
+    str_l = ['item:, cost:, amount of items avalaible:']
+    items_left = in_inventory()
+    for item in items_left:
+        if item[0] == item_rented:
+            if int(amount) > int(item[2]):
+                return False
+            else:
+                item[2] = int(item[2]) - int(amount)
+        item[1] = str(item[1])
+        item[2] = str(item[2])
+        str_l.append(', '.join(item))
+        message = '\n'.join(str_l)
+
+    with open('inventory.txt', 'w') as file: 
+        file.write(message)
+    return True
