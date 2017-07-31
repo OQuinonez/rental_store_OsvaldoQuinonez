@@ -85,7 +85,27 @@ def transaction_num(name):
         numbers += 1
     return int(numbers)
 
-def return_item(number)
+def load_history():
+    """ -> list[list]
+    returns the info of the item choosen
+    """
+    with open("history.txt", 'r') as file:
+        file.readline()
+        items = file.readlines()
+    products = []
+    for purchases in items:
+        individual = purchases.split(', ')
+        products.append([
+            individual[0],
+            individual[1],
+            individual[2],
+            individual[3],
+            individual[4],
+            individual[5],
+            individual[6],
+        ])
+    return products
+
 # >>> from datetime import datetime
 # >>> st = datetime.now()
 # >>> end = datetime.now()
