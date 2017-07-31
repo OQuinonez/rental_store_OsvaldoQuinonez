@@ -41,9 +41,10 @@ def cost_of(amount, item, hours):
         inventory = file.readlines()
     msg = 'Sorry there was an error during the purchase'
     for items in inventory:
-        if item[0].title() in inventory:
-            cost = item[2]
-            total = cost * float(amount) * float(hours)
+        if item[0].title() in items:
+            pieces = items.split(', ')
+            cost = pieces[2]
+            total = float(cost) * float(amount) * float(hours)
             return total
     return msg
 
@@ -68,7 +69,7 @@ def replacement_of(item, amount):
 def update_history(number, payed, item, amount, hours_rent, time):
     ''' str, float, float _> None
     '''
-    msg = str(number) + ', ' + payed + ', ' + item + ', ' + str(amount) + ', ' + hours_rent + ', ' + time + '\n'
+    msg = str(number) + ', ' + payed + ', ' + item + ', ' + amount + ', ' + hours_rent + ', ' + time + '\n'
     with open('history.txt', 'a') as file:
         file.write(msg)
     return None
