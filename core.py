@@ -81,6 +81,7 @@ def is_on_time(inventory, timing_now, number):
     msg = "You did not exceed the hours, unfortunatly we do not give refunds.  "
     for items in inventory:
         if number in items:
+            x = datetime.strptime(items[5], "%d/%m/%y %H:%M")
             diff = timing_now - items[5]
             hours_diff = diff.total_seconds()/60/60
             if hours_diff < timing_now:
