@@ -14,12 +14,16 @@ def inventory():
     inventory = load_inventory()
     print(inventory)
 def valid_product():
-    inventory = load_history()
     product = input('Which one would you like to look at? ').strip()
+    return product
+def valid():
+    production = valid_product()
     store = load_item()
-    valid = get_item(store, product)
-    print(valid)
-    message = item_messages(inventory, product)
+    valids = get_item(store, production)
+    print(valids)
+def msg():
+    all_inventory = load_history()
+    message = item_messages(all_inventory, product)
     print(message)
 def amount():
     amounts = input('\nHow many would you like? ').strip()
@@ -28,22 +32,32 @@ def hour():
     hours = input('\nFor how many hour(s) would you like to rent this item?')
     return hours
 def money_function():
-    money = cost_of(float(amount), product, hours)
+    time = hour()
+    quantity = amount()
+    production = valid_product()
+    money = cost_of(float(quantity), production, time)
     return money
+def taxing():
+    millions = money_function()
+    tax = tax_of(float(millions))
+    return tax
 def store():
     rules()
     inventory()
     valid_product()
+    valid()
+    msg()
     quantity = amount()
     print(quantity)
     dinero = money_function()
-    # quantitiy is now amount
+    # product is now merchandise
+    # quantity is now amount
     # time is now hour
     # dinero is now money
     # tax is now taxes
     time = hour()
     print(time)
-    tax = tax_of(float(money))
+    taxes = taxing()
     take_away(product, amount)
     if take_away(product, amount) == False:
         print('Sorry, we do not have that many items.')
