@@ -120,13 +120,13 @@ def take_away(item_rented, amount):
     str_l = ['item:, cost:, amount of items avalaible:']
     items_left = in_inventory()
     for item in items_left:
-        if item[0] == item_rented:
-            if int(amount) > int(item[2]):
+        if item[0].lower().title() == item_rented.lower().title():
+            if int(amount) > int(item[1]):
                 return False
             else:
-                item[2] = int(item[2]) - int(amount)
-        item[1] = str(item[1])
+                item[1] = int(item[1]) - int(amount)
         item[2] = str(item[2])
+        item[1] = str(item[1])
         str_l.append(', '.join(item))
         message = '\n'.join(str_l)
 
