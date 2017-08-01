@@ -2,7 +2,7 @@ from disk import load_inventory, load_item, replacement_of
 from disk import update_history, transaction_num, cost_of
 from core import get_item, item_messages, tax_of, rent_time
 from core import return_deposit, is_on_time
-from disk import load_history, take_away
+from disk import load_history, take_away, add_back
 import time
 from datetime import datetime
 def rules():
@@ -10,18 +10,39 @@ def rules():
     print ('We would like you to know some things before you rent an item.\n\n')
     print('The price of all items is the price per hour\n\nYou also have to pay a 10% deposit of replacement value.\n\n')
     print('Here is what we have for today.\n\n')
-def store():
+def inventory():
     inventory = load_inventory()
     print(inventory)
+def valid_product():
+    inventory = load_history()
     product = input('Which one would you like to look at? ').strip()
     store = load_item()
     valid = get_item(store, product)
     print(valid)
     message = item_messages(inventory, product)
     print(message)
-    amount = input('\nHow many would you like? ').strip()
+def amount():
+    amounts = input('\nHow many would you like? ').strip()
+    return amounts
+def hour():
     hours = input('\nFor how many hour(s) would you like to rent this item?')
+    return hours
+def money_function():
     money = cost_of(float(amount), product, hours)
+    return money
+def store():
+    rules()
+    inventory()
+    valid_product()
+    quantity = amount()
+    print(quantity)
+    dinero = money_function()
+    # quantitiy is now amount
+    # time is now hour
+    # dinero is now money
+    # tax is now taxes
+    time = hour()
+    print(time)
     tax = tax_of(float(money))
     take_away(product, amount)
     if take_away(product, amount) == False:
@@ -41,12 +62,13 @@ def returning():
     number = input('What is your number? ')
     history = load_history()
     depo = return_deposit(history, number)
-    print('Let\'s see if you exceed your hours. ')
-    print('Loading...')
-    time.sleep(3)
-    right_now = datetime.now()
-    answer = is_on_time(history, right_now, number)
-    print(answer)
+
+    # print('Let\'s see if you exceed your hours. ')
+    # print('Loading...')
+    # time.sleep(3)
+    # right_now = datetime.now()
+    # answer = is_on_time(history, right_now, number)
+    # print(answer)
     print('Here is your deposit of $', depo)
     print('\n 1.  Yes\t2.  No')
     option = input('Would you like to look through the store again? ')
@@ -56,11 +78,10 @@ def returning():
         print('Thank you we hoped you enjoyed your party.')
 
 def main():
-    print('1.\tCheck out store\n2.\tReturn items rented\n')
+    print('\n1.\tCheck out store\n2.\tReturn items rented\n')
     answer = input('What would you like to do today (Please enter number) ?  ')
 
     if answer == '1':
-        rules()
         store()
     elif answer == '2':
         returning()
