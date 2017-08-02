@@ -15,62 +15,33 @@ def inventory():
     print(inventory)
 def valid_product():
     product = input('Which one would you like to look at? ').strip()
-    return product
-def valid():
-    production = valid_product()
     store = load_item()
-    valids = get_item(store, production)
+    valids = get_item(store, product)
     print(valids)
-def msg():
     all_inventory = load_history()
     message = item_messages(all_inventory, product)
     print(message)
-def amount():
     amounts = input('\nHow many would you like? ').strip()
-    return amounts
-def hour():
     hours = input('\nFor how many hour(s) would you like to rent this item?')
-    return hours
-def money_function():
-    time = hour()
-    quantity = amount()
-    production = valid_product()
-    money = cost_of(float(quantity), production, time)
-    return money
-def taxing():
-    millions = money_function()
-    tax = tax_of(float(millions))
-    return tax
-def store():
-    rules()
-    inventory()
-    valid_product()
-    valid()
-    msg()
-    quantity = amount()
-    print(quantity)
-    dinero = money_function()
-    # product is now merchandise
-    # quantity is now amount
-    # time is now hour
-    # dinero is now money
-    # tax is now taxes
-    time = hour()
-    print(time)
-    taxes = taxing()
-    take_away(product, amount)
-    if take_away(product, amount) == False:
+    money = cost_of(amounts, product, hours)
+    tax = tax_of(float(money))
+    take_away(product, amounts)
+    if take_away(product, amounts) == False:
         print('Sorry, we do not have that many items.')
     else:
         print('We would like to remind you that there is a 10% replacement value required fee. \n')
-        replacing = replacement_of(product, amount)
+        replacing = replacement_of(product, amounts)
         print('Ok your total with tax is $', float(money), '\nYou also have to pay a deposit of $', float(replacing))
         time_out = rent_time(product)
         renting = float(money) + float(replacing)
         print('Your total for today is $', renting)
         number = transaction_num(product)
-        update_history(str(number), float(money), product, int(amount), float(hours), time_out, replacing)
+        update_history(str(number), float(money), product, int(amounts), float(hours), time_out, replacing)
         print('Thanks for stopping by your number is ', number, ' you will need it when you come back.')
+def store():
+    rules()
+    inventory()
+    valid_product()
 def returning():
     inventory = load_inventory()
     number = input('What is your number? ')
