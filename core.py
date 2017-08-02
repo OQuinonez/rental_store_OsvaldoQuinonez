@@ -73,23 +73,23 @@ def tax_of(money):
 #             return difference
 #     return msg
 
-def is_on_time(inventory, timing_now, number):
-    ''' list[str]], date.time, int _> float
-    Returns the number of hours different
-    '''
-    bad_msg = 'Sorry, there was an error during the transaction please try again.'
-    msg = "You did not exceed the hours, unfortunatly we do not give refunds.  "
-    for items in inventory:
-        if number in items:
-            x = datetime.strptime(items[5], "%d/%m/%y %H:%M")
-            diff = timing_now - items[5]
-            hours_diff = diff.total_seconds()/60/60
-            if hours_diff < timing_now:
-                total_hrs = hours_diff - timing_now
-                return msg
-            else:
-                return float(total_hrs)
-    return bad_msg
+# def is_on_time(inventory, timing_now, number):
+#     ''' list[str]], date.time, int _> float
+#     Returns the number of hours different
+#     '''
+#     bad_msg = 'Sorry, there was an error during the transaction please try again.'
+#     msg = "You did not exceed the hours, unfortunatly we do not give refunds.  "
+#     for items in inventory:
+#         if number in items:
+#             x = datetime.strptime(items[5], "%d/%m/%y %H:%M")
+#             diff = timing_now - items[5]
+#             hours_diff = diff.total_seconds()/60/60
+#             if hours_diff < timing_now:
+#                 total_hrs = hours_diff - timing_now
+#                 return msg
+#             else:
+#                 return float(total_hrs)
+#     return bad_msg
 
 
 
