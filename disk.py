@@ -68,6 +68,8 @@ def replacement_of(item, amount):
 
 def update_history(number, payed, item, amount, hours_rent, time, deposit):
     ''' str, float, float _> None
+    Function will update the history text file with all the 
+    parameters provided
     '''
     msg = str(number) + ', ' + str(payed) + ', ' + str(item) + ', ' + str(amount) + ', ' + str(hours_rent) + ', ' + str(time) + ', ' + str(deposit) + '\n'
     with open('history.txt', 'a') as file:
@@ -107,6 +109,10 @@ def load_history():
     return products
 
 def in_inventory():
+    ''' _> inventory
+    Function returns everything in the inventory
+    Made it to be used in take_away
+    '''
     left = []
     with open('inventory.txt', 'r') as file:
         file.readline()
@@ -117,6 +123,11 @@ def in_inventory():
     return left
 
 def take_away(item_rented, amount):
+    """ 
+    Function gets the item rented and the amount
+    the customer rented and it will subtract it 
+    from the inventory
+    """
     str_l = ['item:, cost:, amount of items avalaible:']
     items_left = in_inventory()
     for item in items_left:
@@ -135,6 +146,11 @@ def take_away(item_rented, amount):
     return True
 
 def in_history():
+    """ 
+    Small function that returns everything in
+    the history text file as a list of list
+    Made it for add_back
+    """
     left = []
     with open('history.txt', 'r') as file:
         file.readline()
@@ -145,6 +161,9 @@ def in_history():
     return left
 
 def add_back(number, amount):
+    """ 
+    Function adds the amount borrowed back to the inventory
+    """
     str_l = ['item:, cost:, amount of items avalaible:']
     items_left = in_history()
     for item in items_left:
@@ -163,6 +182,10 @@ def add_back(number, amount):
 
 
 def return_amount_borrowed(number):
+    """
+    Function returns the amount the customer borrowed
+    once there number is given 
+    """
     with open('history.txt') as file:
         file.readline()
         elements = file.readlines()
