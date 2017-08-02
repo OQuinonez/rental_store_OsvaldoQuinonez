@@ -102,7 +102,7 @@ def load_history():
             individual[3],
             individual[4],
             individual[5],
-            individual[6],
+            individual[6].strip()
         ])
     return products
 
@@ -160,3 +160,17 @@ def add_back(number, amount):
     with open('inventory.txt', 'w') as file: 
         file.write(message)
     return True
+
+
+def return_amount_borrowed(number):
+    with open('history.txt') as file:
+        file.readline()
+        elements = file.readlines()
+    msg = 'Sorry there was a error in during the transaction'
+    for items in elements:
+        pieces = items.split(', ')
+        if number in pieces:
+            return int(pieces[3])
+        else:
+            return False
+    return msg
