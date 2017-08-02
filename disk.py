@@ -40,9 +40,9 @@ def cost_of(amount, item, hours):
         file.readline()
         inventory = file.readlines()
     msg = 'Sorry there was an error during the purchase'
-    for items in inventory:
-        if item[0].title() in items:
-            pieces = items.split(', ')
+    for elements in inventory:
+        if item[0].title() in elements:
+            pieces = elements.split(', ')
             cost = pieces[2]
             total = float(cost) * float(amount) * float(hours)
             return total
@@ -127,6 +127,33 @@ def take_away(item_rented, amount):
                 item[1] = int(item[1]) - int(amount)
         item[2] = str(item[2])
         item[1] = str(item[1])
+        str_l.append(', '.join(item))
+        message = '\n'.join(str_l)
+
+    with open('inventory.txt', 'w') as file: 
+        file.write(message)
+    return True
+
+def in_history():
+    left = []
+    with open('history.txt', 'r') as file:
+        file.readline()
+        lines = file.readlines()
+    for line in lines:
+        split_string = line.strip().split(', ')
+        left.append([(split_string[0]), (split_string[1]), (split_string[2]), (split_string[3]), (split_string[4]), (split_string[5]), (split_string[6])])
+    return left
+
+def add_back(number, amount):
+    str_l = ['item:, cost:, amount of items avalaible:']
+    items_left = in_history()
+    for item in items_left:
+        if item[0] != number:
+                return False
+        else:
+            item[3] = int(item[3]) + int(amount)
+        item[2] = str(item[2])
+        item[3] = str(item[3])
         str_l.append(', '.join(item))
         message = '\n'.join(str_l)
 
