@@ -20,7 +20,7 @@ def get_item(inventory, item):
     return msg
 
 def return_deposit(inventory, number):
-    ''' list[str], str _> str
+    ''' list[str], str _> str 
     Function will get a number from the user and it
     will look for it in the history.txt file and if 
     it is found, it will return the deposit
