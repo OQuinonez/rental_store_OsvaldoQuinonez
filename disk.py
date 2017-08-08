@@ -71,7 +71,7 @@ def update_history(number, payed, item, amount, hours_rent, time, deposit):
     '''
     msg = str(number) + ', ' + str(payed) + ', ' + str(item) + ', ' + str(
         amount) + ', ' + str(hours_rent) + ', ' + str(time) + ', ' + str(
-            deposit) + '\n'
+            deposit) + ' ' + '\n'
     with open('history.txt', 'a') as file:
         file.write(msg)
     return None
@@ -170,9 +170,9 @@ def sum_revenue():
     Function will get the total revenue when called
     in the manager branch in the shell
     """
-    with open('history.txt', 'r'): as file:
+    with open('history.txt', 'r') as file:
         file.readline()
-        element = file.realines()
+        element = file.readlines()
     total = 0
     for item in element:
         pieces = item.split(', ')
