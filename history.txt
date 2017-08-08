@@ -1,1 +1,4 @@
 number_for_return, total_money, product, amount, hours_rent, time_item_left, deposit
+2, 80.0, Tables, 20, 4.0, 17/08/08 09:59, 18.00, 
+3, 50.0, Chairs, 50, 4.0, 17/08/08 09:59, 35.00, 
+4, 1600.0, Bouncy House, 2, 8.0, 17/08/08 10:00, 200.00, 
