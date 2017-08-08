@@ -1,4 +1,4 @@
-item:, cost:, amount of items avalaible:
+item:, Quantity:, price_per_item:, Replacement_value:
 Chairs, 450, .25, 7.00
 Tables, 150, 1.00, 9.00
 Bouncy House, 5, 100.00, 1000.00
