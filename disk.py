@@ -71,7 +71,7 @@ def update_history(number, payed, item, amount, hours_rent, time, deposit):
     '''
     msg = str(number) + ', ' + str(payed) + ', ' + str(item) + ', ' + str(
         amount) + ', ' + str(hours_rent) + ', ' + str(time) + ', ' + str(
-            deposit) + ' ' + '\n'
+            deposit) + ', ' + '\n'
     with open('history.txt', 'a') as file:
         file.write(msg)
     return None
@@ -176,60 +176,6 @@ def sum_revenue():
     total = 0
     for item in element:
         pieces = item.split(', ')
-        deposit = int(pieces[6])
-        total += deposit
+        deposit = pieces[6]
+        total += float(deposit)
     return total
-
-
-# def add_back(number, amount):
-#     """
-#     Function adds the amount borrowed back to the inventory
-#     """
-#     str_l = ['item:, cost:, amount of items avalaible:']
-#     items_left = in_history()
-#     for item in items_left:
-#         if item[0] != number:
-#             return False
-#         else:
-#             item[3] = int(item[3]) + int(amount)
-#         item[2] = str(item[2])
-#         item[3] = str(item[3])
-#         str_l.append(', '.join(item))
-#         message = '\n'.join(str_l)
-
-#     with open('inventory.txt', 'w') as file:
-#         file.write(message)
-#     return True
-
-# def return_amount_borrowed(number):
-#     """
-#     Function returns the amount the customer borrowed
-#     once there number is given
-#     """
-#     with open('history.txt') as file:
-#         file.readline()
-#         elements = file.readlines()
-#     msg = 'Sorry there was a error in during the transaction'
-#     for items in elements:
-#         pieces = items.split(', ')
-#         if number in pieces:
-#             return int(pieces[3])
-#         else:
-#             return False
-#     return msg
-
-# def after_returning_history(number):
-#     """
-#     Function will get a number and look
-#     for it in the history file, and if it
-#     is found, it will make the deposit be zero
-#     """
-#     with open('history.txt', 'r') as file:
-#         file.readline()
-#         items = file.readlines()
-#     for products in items:
-#         if number in products:
-#             pieces.products.split(', ')
-#             products[6] = 0.0
-#             return products
-#     return None
