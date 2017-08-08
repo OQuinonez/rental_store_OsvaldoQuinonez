@@ -129,7 +129,7 @@ def take_away(item_rented, amount):
     the customer rented and it will subtract it 
     from the inventory
     """
-    str_l = ['item:, amount:,cost:, replacement value:']
+    str_l = ['item:, amount:, cost:, replacement value:']
     items_left = in_inventory()
     for item in items_left:
         if item[0].lower().title() == item_rented.lower().title():
@@ -165,20 +165,38 @@ def in_history():
     return left
 
 
-def add_back(item_rented, amount):
+def get_amount_history(number):
+    """ int -> int
+    Function will receive a number and it 
+    will look for it in the inventory and return
+    the amount borrowed that corresponds with that number
+    """
+    with open('history.txt', 'r') as file:
+        file.readline()
+        element = file.readlines()
+    msg = "Sorry, there has been an error"
+    for item in element:
+        if number in item:
+            pieces = item.split(', ')
+            amount = pieces[3]
+            return amount
+    return msg
+
+
+def add_back(number, amount):
     """ 
     Function gets the item rented and the amount
     the customer rented and it will subtract it 
     from the inventory
     """
-    str_l = ['item:, cost:, amount of items avalaible:']
+    str_l = ['item:, amount:, cost:, replacement value:']
     items_left = in_inventory()
     for item in items_left:
-        if item[0].lower().title() == item_rented.lower().title():
+        if item[0] == number:
             if int(amount) > int(item[1]):
                 return False
             else:
-                item[1] = int(item[1]) - (int(amount) // 2)
+                item[1] = int(item[1]) + (int(amount) // 2)
         item[2] = str(item[2])
         item[1] = str(item[1])
         str_l.append(', '.join(item))
