@@ -129,7 +129,7 @@ def take_away(item_rented, amount):
     the customer rented and it will subtract it 
     from the inventory
     """
-    str_l = ['item:, cost:, amount of items avalaible:']
+    str_l = ['item:, amount:,cost:, replacement value:']
     items_left = in_inventory()
     for item in items_left:
         if item[0].lower().title() == item_rented.lower().title():
@@ -163,6 +163,30 @@ def in_history():
                      (split_string[3]), (split_string[4]), (split_string[5]),
                      (split_string[6])])
     return left
+
+
+def add_back(item_rented, amount):
+    """ 
+    Function gets the item rented and the amount
+    the customer rented and it will subtract it 
+    from the inventory
+    """
+    str_l = ['item:, cost:, amount of items avalaible:']
+    items_left = in_inventory()
+    for item in items_left:
+        if item[0].lower().title() == item_rented.lower().title():
+            if int(amount) > int(item[1]):
+                return False
+            else:
+                item[1] = int(item[1]) - (int(amount) // 2)
+        item[2] = str(item[2])
+        item[1] = str(item[1])
+        str_l.append(', '.join(item))
+        message = '\n'.join(str_l)
+
+    with open('inventory.txt', 'w') as file:
+        file.write(message)
+    return True
 
 
 def sum_revenue():
