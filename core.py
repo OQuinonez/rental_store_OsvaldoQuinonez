@@ -1,6 +1,29 @@
 from datetime import datetime
 
 
+def get_item_names(products):
+    """ [[str]] -> [str]
+    returns a list of the first items in each list in products
+    >>> get_item_names([['a', 'b'], ['c', 'd']])
+    ['a', 'c']
+    """
+    names = []
+    for item in products:
+        names.append(item[0])
+    return names
+
+
+def cost_of(amount, item, hours, products):
+    """ int, str, float , [[]] -> float
+    Function will recieve an item and look for it in the
+    inventory and if it is found it will return 
+    the price of it multiplied by the hours
+    """
+    for items in products:
+        if items[0] == item:
+            return float(items[2]) * float(amount) * float(hours)
+
+
 def rent_time(item_name):
     '''str _> float
     Function will recive the item name and it will return
@@ -17,11 +40,31 @@ def get_item(inventory, item):
     it is found in the inventory 
     it returns the item information.
     '''
-    msg = 'Item could not be found'
     for elements in inventory:
         if item.title() in elements:
             return elements[0:3]
-    return msg
+    return 'Item could not be found'
+
+
+def get_max_amount(item, products):
+    ''' str, [[]] -> num
+    returns the number of items in stock
+    for a certain item '''
+    for stock in products:
+        if item == stock[0]:
+            return int(stock[1])
+
+
+def replacement_of(item, amount, products):
+    ''' str, int, [[]] _> str
+    Function will recive and item and the amount rented
+    for the item and it will return the replacement value 
+    for the amount of the same items rented
+    '''
+    for items in products:
+        if item == items[0]:
+            value = (float(items[3]) * .10) * float(amount)
+            return '{:0.2f}'.format(value)
 
 
 def return_deposit(inventory, number):
@@ -61,6 +104,26 @@ def tax_of(money):
     tax = (money) * .07
     total = money + tax
     return '{:0.2f}'.format(total)
+
+
+def rent_item(products, item, amounts):
+    """ [[str]], str, int -> [[str]]
+    removes the amount an rented item from the inventory
+    """
+    for items in products:
+        if item == items[0]:
+            items[1] = str(int(items[1]) - int(amounts))
+    return products
+
+
+def add_item_back(products, item, amounts):
+    """ [[str]], str, int -> [[str]]
+    Adds back the amount rented to the inventory
+    """
+    for items in products:
+        if item == items[0]:
+            items[1] == str(int(items[1]) + int(amounts))
+    return products
 
 
 # >>> from datetime import datetime
