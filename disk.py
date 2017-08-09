@@ -12,6 +12,20 @@ def load_items():
     return products
 
 
+def load_history():
+    """ -> list[list]
+    Function loads the history
+    """
+    with open("history.txt", 'r') as file:
+        file.readline()
+        items = file.readlines()
+    products = []
+    for purchases in items:
+        individual = purchases.strip().split(', ')
+        products.append(individual)
+    return products
+
+
 def update_inventory(products):
     """ 
     Function gets the item rented and the amount
@@ -101,28 +115,28 @@ def get_amount_history(number):
     return msg
 
 
-def add_back(number, amount):
-    """ 
-    Function gets the item rented and the amount
-    the customer rented and it will subtract it 
-    from the inventory
-    """
-    str_l = ['item:, amount:, cost:, replacement value:']
-    items_left = in_history()
-    for item in items_left:
-        if item[0] == number:
-            if int(amount) > int(item[1]):
-                return False
-            else:
-                item[1] = int(item[1]) + (int(amount) // 2)
-        item[2] = str(item[2])
-        item[1] = str(item[1])
-        str_l.append(', '.join(item))
-        message = '\n'.join(str_l)
+# def add_back(number, amount):
+#     """
+#     Function gets the item rented and the amount
+#     the customer rented and it will subtract it
+#     from the inventory
+#     """
+#     str_l = ['item:, amount:, cost:, replacement value:']
+#     items_left = in_history()
+#     for item in items_left:
+#         if item[0] == number:
+#             if int(amount) > int(item[1]):
+#                 return False
+#             else:
+#                 item[1] = int(item[1]) + (int(amount) // 2)
+#         item[2] = str(item[2])
+#         item[1] = str(item[1])
+#         str_l.append(', '.join(item))
+#         message = '\n'.join(str_l)
 
-    with open('inventory.txt', 'w') as file:
-        file.write(message)
-    return True
+#     with open('inventory.txt', 'w') as file:
+#         file.write(message)
+#     return True
 
 
 def sum_revenue():
