@@ -24,16 +24,6 @@ def cost_of(amount, item, hours, products):
             return float(items[2]) * float(amount) * float(hours)
 
 
-def rent_time(item_name):
-    '''str _> float
-    Function will recive the item name and it will return
-    the time it was rented
-    '''
-    time = datetime.now().strftime('%y/%m/%d %H:%M')
-    return time
-
-
-    # return time.strptime("%H:%M:%S, %B %d, 20%y", ???)
 def get_item(inventory, item):
     ''' list[list], str_> str, float, float
     Functions recieves an item and if 
@@ -67,17 +57,16 @@ def replacement_of(item, amount, products):
             return '{:0.2f}'.format(value)
 
 
-def return_deposit(inventory, number):
-    ''' list[str], str _> str 
+def return_deposit(number, item, products):
+    ''' str, str, [[]] _> str 
     Function will get a number from the user and it
     will look for it in the history.txt file and if 
     it is found, it will return the deposit
     '''
-    msg = 'Sorry could not find number'
-    for elements in inventory:
-        if number in elements:
-            return elements[6]
-    return msg
+    for items in products:
+        if item == items[0]:
+            return str(int(number) * float(items[3]) * 0.10)
+    return 'Sorry could not find number'
 
 
 def item_messages(inventory, item):
@@ -122,7 +111,7 @@ def add_item_back(products, item, amounts):
     """
     for items in products:
         if item == items[0]:
-            items[1] == str(int(items[1]) + int(amounts))
+            items[1] = str(int(items[1]) + int(amounts))
     return products
 
 
