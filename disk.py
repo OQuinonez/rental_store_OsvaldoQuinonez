@@ -40,6 +40,12 @@ def update_inventory(products):
         file.write(message)
 
 
+def add_return_transaction(item, amount, deposit):
+    message = '0.0, {}, {}, 0, -{}\n'.format(item, amount, deposit)
+    with open('history.txt', 'a') as file:
+        file.write(message)
+
+
 def update_history(money, item, amounts, hours, deposit):
     ''' str, float, float _> None
     Function will update the history text file with all the 
@@ -150,6 +156,6 @@ def sum_revenue():
     total = 0
     for item in element:
         pieces = item.split(', ')
-        deposit = pieces[6]
+        deposit = pieces[4]
         total += float(deposit)
     return total
