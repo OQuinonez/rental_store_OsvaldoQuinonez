@@ -11,9 +11,9 @@ def print_rules():
     print('Here is what we have for today.\n\n')
 
 
-def get_item_decision(item_names):
+def get_item_decision(item_names, question):
     while True:
-        item = input('Which one would you like to look at? ').strip()
+        item = input(question).strip()
         if item in item_names:
             return item
         print('uh-oh we do not have that')
@@ -52,27 +52,24 @@ def rent_an_item():
     disk.update_history(money, item, amounts, hours, deposit)
     disk.update_inventory(products)
     print('Your total for today is $', renting)
+    exit()
 
 
 def returning():
-    inventory = disk.load_inventory()
-    history = disk.load_history()
+    products = disk.load_items()
+    # history = disk.load_history()
     print('Here is the list of the items you could have rented.\n')
-    print(inventory)
-    number = input('What is your number? ')
-    depo = core.return_deposit(history, number)
+    item_names = core.get_item_names(products)
+    print('\n'.join(item_names))
+    item = get_item_decision(item_names, "What item did you get? \n")
+    number = input('How many items did you rent? \n').lower().strip()
+    depo = core.return_deposit(number, item, products)
     print('Here is your deposit of $', depo)
-    amount = disk.get_amount_history(number)
-    disk.add_back(number, amount)
-    if disk.add_back(number, amount) == False:
-        print('There has been an error')
-    else:
-        print('\n 1.  Yes\t2.  No')
-        option = input('Would you like to look through the store again? ')
-        if option == '1':
-            store()
-        else:
-            print('Thank you we hoped you enjoyed your party.')
+    # amounts = disk.get_amount_history(number)
+    products = core.add_item_back(products, item, number)
+    disk.update_inventory(products)
+    disk.add_return_transaction(item, number, depo)
+    exit()
 
 
 def total_revenue():
