@@ -53,8 +53,8 @@ def replacement_of(item, amount, products):
     '''
     for items in products:
         if item == items[0]:
-            # value = float(items[3]) * .10 * float(amount)
-            return float(items[3]) * .10 * float(amount)
+            value = float(items[3]) * .10 * float(amount)
+            return '{:0.2f}'.format(value)
 
 
 def return_deposit(number, item, products):
