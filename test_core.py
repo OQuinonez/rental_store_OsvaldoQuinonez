@@ -39,3 +39,16 @@ def test_tax_of():
     actual = core.tax_of(1.00)
     expect = '1.07'
     assert expect == actual
+
+
+# def test_replacement_of():
+#     expect = core.replacement_of('Chair', 4, [['Chairs', '400', '.25',
+#                                                '7.00']])
+#     actual = 2.80
+#     assert expect == actual
+
+
+def test_return_deposit():
+    actual = core.return_deposit('4', 'Chairs',
+                                 [['Chairs', '450', '.25', '7.00']])
+    expect = '2.8'
