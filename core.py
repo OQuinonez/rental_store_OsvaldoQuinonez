@@ -113,21 +113,3 @@ def add_item_back(products, item, amounts):
         if item == items[0]:
             items[1] = str(int(items[1]) + int(amounts))
     return products
-
-
-# >>> from datetime import datetime
-# >>> st = datetime.now()
-# >>> end = datetime.now()
-# >>> end - st
-# datetime.timedelta(0, 10, 646110)
-# >>> d = end - st
-# >>> d.days
-# 0
-# >>> d.min
-# datetime.timedelta(-999999999)
-# >>> d.total_seconds
-# <built-in method total_seconds of datetime.timedelta object at 0x7f9ca9b5f968>
-# >>> d.total_seconds()
-# 10.64611
-# >>> d.total_seconds() / 60 / 60
-# 0.002957252777777778
