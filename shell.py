@@ -31,9 +31,10 @@ def get_amount(max_amount):
 def rent_an_item():
     products = disk.load_items()
     print_rules()
+    question = "What would you like today?"
     item_names = core.get_item_names(products)
     print('\n'.join(item_names))
-    item = get_item_decision(item_names)
+    item = get_item_decision(item_names, question)
     print(core.get_item(products, item))
     max_amount = core.get_max_amount(item, products)
     amounts = get_amount(max_amount)
