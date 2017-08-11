@@ -1,8 +1,1 @@
 total_money, product, amount, hours_rent, deposit
-210.0, Tables, 35, 6, 31.50
-925.0, Chairs, 370, 10, 259.00
-925.0, Chairs, 370, 10, 259.00
-0.0, Chairs, 0, 3, 0.00
-0.0, Chairs, 0, 3, 0.00
-0.0, Chairs, 0, 3, 0.00
-0.0, Chairs, 2, 0, -1.4000000000000001
