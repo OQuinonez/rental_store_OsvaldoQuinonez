@@ -46,7 +46,7 @@ def get_max_amount(item, products):
 
 
 def replacement_of(item, amount, products):
-    ''' str, int, [[]] _> str
+    ''' str, int, [[str]] _> str
     Function will recive and item and the amount rented
     for the item and it will return the replacement value 
     for the amount of the same items rented
@@ -66,7 +66,6 @@ def return_deposit(number, item, products):
     for items in products:
         if item == items[0]:
             return str(int(number) * float(items[3]) * 0.10)
-    return 'Sorry could not find number'
 
 
 def item_messages(inventory, item):
