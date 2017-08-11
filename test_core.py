@@ -41,14 +41,28 @@ def test_tax_of():
     assert expect == actual
 
 
-# def test_replacement_of():
-#     expect = core.replacement_of('Chair', 4, [['Chairs', '400', '.25',
-#                                                '7.00']])
-#     actual = 2.80
-#     assert expect == actual
+def test_replacement_of():
+    actual = core.replacement_of('Chair', '4',
+                                 [['Chairs', '400', '.25', '7.00']])
+    expect = None
+    assert expect == actual
 
 
 def test_return_deposit():
     actual = core.return_deposit('4', 'Chairs',
                                  [['Chairs', '450', '.25', '7.00']])
-    expect = '2.8'
+    expect = '2.80'
+    assert actual == expect
+
+
+def test_rent_item():
+    actual = core.rent_item([['Chairs', '450', '.25', '7.00']], 'Chairs', 20)
+    expect = [['Chairs', '430', '.25', '7.00']]
+    assert actual == expect
+
+
+def test_add_item_back():
+    actual = core.add_item_back([['Chairs', '430', '.25', '7.00']], 'Chairs',
+                                20)
+    expect = [['Chairs', '450', '.25', '7.00']]
+    assert actual == expect
