@@ -1,1 +1,3 @@
 total_money, product, amount, hours_rent, deposit
+25.0, Chairs, 20, 5, 14.00
+0.0, Chairs, 20, 0, -14.00
