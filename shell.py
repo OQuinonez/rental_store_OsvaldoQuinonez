@@ -13,7 +13,7 @@ def print_rules():
 
 def get_item_decision(item_names, question):
     while True:
-        item = input(question).strip()
+        item = input(question).strip().lower().title()
         if item in item_names:
             return item
         print('uh-oh we do not have that')
